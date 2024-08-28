@@ -2,7 +2,6 @@
 #include "UltrasonicSensor.h"
 #include "LED.h"
 
-// Definir los pines
 int trigPin = 12;
 int echoPin = 13;
 
@@ -13,7 +12,7 @@ LED ledRed(26);
 LED ledBlue(25);
 
 unsigned long previousMillis = 0;
-const long interval = 1000;  // Intervalo de 1 segundo
+const long interval = 1000;  
 
 void setup() {
   Serial.begin(115200);
@@ -26,13 +25,12 @@ void loop() {
     previousMillis = currentMillis;
 
     sensor.trigger();
-    float distance = sensor.getDistance(); // Cambiado a float
+    float distance = sensor.getDistance(); 
 
     Serial.print("Distance: ");
-    Serial.print(distance, 2); // Muestra con 2 decimales
+    Serial.print(distance, 2); 
     Serial.println(" cm");
 
-    // Controlar los LEDs según la distancia
     if (distance <= 10) {
       ledRed.turnOn();
       ledYellow.turnOff();
